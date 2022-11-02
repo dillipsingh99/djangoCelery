@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-3">
+    <table>
+        <tr>
+            <th><b>Name</b></th>
+            <th><b>birthdate</b></th>
+            <th><b>Country</b></th>
+            <th><b>City</b></th>
+        </tr>
+    {% for i in data %}
+        
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.birthdate}}</td>
+            <td>{{i.country}} </td> 
+            <td>{{i.city}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+
+{% endblock content %}
+
+
+

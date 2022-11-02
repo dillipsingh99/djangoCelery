@@ -1,0 +1,51 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>codewithdk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://unpkg.com/htmx.org@1.8.2" integrity="sha384-+8ISc/waZcRdXCLxVgbsLzay31nCdyZXQxnsUy++HJzJliTzxKWr0m1cIEMyUzQu" crossorigin="anonymous"></script>
+    <script src="{% static 'demo.js' %}"></script>
+    <style>
+      table, th, td {
+         border: 1px solid black;
+      }
+   </style>
+  </head>
+  <body>
+
+    {% block content %}
+
+
+    {% endblock content %}
+
+    {% comment %} <p id="demo">JavaScript can change HTML content.</p>
+    <button type="button" onclick='document.getElementById("demo").innerHTML="Hello! JavaScript."'>Change</button>
+    <h2>The addEventListner() method</h2>
+    <p>This example uses the addEventListner() method to attach a click event to a button.</p>
+    <button id="btn">Date</button>
+    <p id="try"></p>
+    <button id="text">Change</button>
+    <p id="chan"></p>
+    <button id="myhub">Alert</button>
+    <script>
+      document.getElementById("btn").addEventListener("click", displayDate);
+      function displayDate(){
+      document.getElementById("try").innerHTML = Date();
+      }
+      document.getElementById("text").addEventListener("click", changeText);
+      function changeText(){
+        document.getElementById("chan").innerHTML = "This is demo.";
+      }
+      document.getElementById('myhub').addEventListener('click', doAlert);
+      function doAlert(){
+        alert("Hello Wordl")
+      }
+    </script {% endcomment %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>

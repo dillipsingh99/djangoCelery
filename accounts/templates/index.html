@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in messages %}
+    {{message}}
+{% endfor %}
+<div style="width: 450px;  margin: 0 auto; padding: 10px;">
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'password_change' %}">Password hange</a></p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+  <h2>Welcome to ekGhanti</h2>
+  <p>Login or Create your account</p>
+  <a href="{% url 'login' %}" class="btn btn-primary">Login</a> 
+  <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+  <a href="{% url 'password_reset' %}" class="btn btn-primary">forget password</a>
+  {% endif %}
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in messages %}
+
+    {{message}}
+{% endfor %}
+<div style="width: 450px;  margin: 0 auto; padding: 10px;">
+    <div id="login">
+        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+                <input type="text" id="email" name="email"  placeholder="Email">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Login</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div style="width: 450px;  margin: 0 auto; padding: 10px;">
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+{% endblock %} {% endcomment %}

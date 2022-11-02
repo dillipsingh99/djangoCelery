@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container p-5"
+   <p> {{request.user.username}}</p>
+   <p> {{request.user.id}}</p>
+   <p> {{ request.user.email }}</p>
+   <p> {{users.first_name}}  </p>
+   <p> {{users.last_name}}  </p>
+   <p> {{users.phone}}  </p>
+   <p> {{users.profile_image}}  </p>
+   <p> {{users.address}}  </p>
+   {% comment %} <img src="{{users.dummy_robort.png}}" alt='Profile Image' width='200rem' heigth='200rem'> {% endcomment %}
+
+   <a href="{% url 'profile_edit' %}">Update</a>
+   <form method="post" action="{% url 'delete_user_profile' %}">
+      {% csrf_token %}
+      <button type="submit">delete account</button>
+  </form>
+<div>
+{% endblock content %}
+{% comment %} {% url 'profile' user.id %} {% endcomment %}

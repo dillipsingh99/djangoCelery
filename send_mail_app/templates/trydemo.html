@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for message in messages %}
+    {{message}}
+{% endfor %}
+<button onclick="myFunction()">Click me!</button>
+
+    <div class="d-flex align-items-center mt-4">    
+        <form action="{% url "send_mail_app:upload" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p><label>Upload a file</label>
+            <input type='file' name='file'>
+        Only accept csv files
+            <button type="submit">Upload</button></p>
+        </form>
+    </div>
+    <div class="align-center col-10 offset-1">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="lead ml-0">Data</p>
+        </div>
+        <hr/>
+        
+        <div id="contact-list">
+            {% include 'list.html' %}
+        </div>
+    </div>
+
+{% comment %} 
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="lead ml-0">Data</p>    
+    </div>
+    <ul class="list-group col-4" id="list">
+        
+        {% for data n datas %}
+        {% if forloop.last %}
+        <div hx-get="{% url 'send_mail_app:solo' %}?page={{datas.number|add:1}}" hx-trigger="revealed" hx-swap="afterend" hx-target="#list">
+        {% else %}
+        <div>
+        {% endif %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{data.name}}
+                {{data.city}}
+                {{data.number}}
+                {{data.Country}}
+                
+            </li>
+        </div>
+    
+        {% endfor %}
+    </ul>
+    </div> {% endcomment %}
+</div>
+</div>
+<br><br>
+
+
+{% endblock content %}
